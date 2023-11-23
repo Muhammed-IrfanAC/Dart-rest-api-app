@@ -63,7 +63,7 @@ class MyHomePage extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => Get_Page(apiUrl: myController.text.toString())));
+                            builder: (context) => GetPage(apiUrl: myController.text.toString())));
                   }),
             ),
             SizedBox(

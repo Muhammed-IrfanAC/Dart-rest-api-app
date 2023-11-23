@@ -4,16 +4,16 @@ import 'package:rest_api/screens/prud_desc_page.dart';
 import 'package:rest_api/services/crud.dart';
 import 'package:rest_api/widgets/product_card.dart';
 
-class Get_Page extends StatefulWidget {
-  Get_Page({super.key, required this.apiUrl});
+class GetPage extends StatefulWidget {
+  GetPage({super.key, required this.apiUrl});
 
   String apiUrl;
 
   @override
-  State<Get_Page> createState() => _Get_PageState();
+  State<GetPage> createState() => _GetPageState();
 }
 
-class _Get_PageState extends State<Get_Page> {
+class _GetPageState extends State<GetPage> {
   late Future<List<ProductModel>> productData;
 
 
@@ -40,6 +40,8 @@ class _Get_PageState extends State<Get_Page> {
                 return GridView.builder(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
+                    childAspectRatio: 0.5,
+                    mainAxisSpacing: 5,
                   ),
                   itemCount: productData!.length,
                   itemBuilder: (BuildContext context, index) {
