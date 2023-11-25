@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/star_rating.dart';
@@ -19,7 +18,7 @@ class ProdDescPage extends StatelessWidget {
 
         isExtended: true,
         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        label: Text('Buy Now'),
+        label: const Text('Buy Now'),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       appBar: AppBar(
@@ -33,32 +32,32 @@ class ProdDescPage extends StatelessWidget {
             children: [
               const SizedBox(height: 50),
               Image.network(image),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Text(
                 this.title,
                 style: TextStyle(fontSize: 15),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               StarRating(rating),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    "${price}",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                    "\$$price",
+                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Text(description),
-              SizedBox(
+              const SizedBox(
                 height: 100,
               ),
             ],

@@ -21,24 +21,29 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: MyHomePage(title: 'REST API'),
+      home: const MyHomePage(title: 'REST API'),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  MyHomePage({super.key, required this.title});
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
 
   final String title;
 
-  final myController = TextEditingController();
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  final apiController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(title),
+        title: Text(widget.title),
       ),
       body: Container(
         margin: const EdgeInsets.all(10),
@@ -46,8 +51,8 @@ class MyHomePage extends StatelessWidget {
         child: Column(
           children: [
             TextField(
-                controller: myController,
-                decoration: InputDecoration(
+                controller: apiController,
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "API address goes here",
                 )),
@@ -63,7 +68,8 @@ class MyHomePage extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => GetPage(apiUrl: myController.text.toString())));
+                            builder: (context) => GetPage(
+                                apiUrl: apiController.text.toString())));
                   }),
             ),
             SizedBox(
@@ -77,7 +83,9 @@ class MyHomePage extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const Post_Page()));
+                            builder: (context) => PostPage(
+                              apiUrl: apiController.text,
+                            )));
                   }),
             ),
             SizedBox(
@@ -114,5 +122,3 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
-
-

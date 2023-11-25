@@ -40,7 +40,7 @@ class _GetPageState extends State<GetPage> {
                 return GridView.builder(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    childAspectRatio: 0.5,
+                    childAspectRatio: 0.45,
                     mainAxisSpacing: 5,
                   ),
                   itemCount: productData!.length,

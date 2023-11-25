@@ -4,13 +4,6 @@ import 'package:http/http.dart' as http;
 import 'package:rest_api/models/product_model.dart';
 
 class Crud {
-  //final client = http.Client();
-  // Future<ProductModel> get(String apiUrl) async {
-  //   var response = await client.get(Uri.parse(apiUrl));
-  //   var data = jsonDecode(response.body.toString());
-  //   print(data.toString() + '      asdfghjk');
-  //   return ProductModel.fromJson(data);
-  // }
   Future<List<ProductModel>> get(String url) async {
     final response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
@@ -23,11 +16,26 @@ class Crud {
     } else {
       throw Exception('Failed to load');
     }
-    //print(response.statusCode);
   }
 
-  Future<dynamic> post(String apiUrl) async {
-    // car response = http.Client().post(Uri.parse(apiUrl), body: )
+  Future<dynamic> post(String apiUrl, int id, String title, double price,
+      String description, String category, String image, double rate,
+      int count) async {
+    final response = await http.post(Uri.parse(apiUrl),
+        body: jsonEncode({
+          "id": id,
+          "title": title,
+          "price": price,
+          "description": description,
+          "category": category,
+          "image": image,
+          "rating": {"rate": rate, "count": count}
+        }));
+    if(response.statusCode==200 ) {
+      return 200;
+    } else {
+      throw Exception('Failed POST');
+    }
   }
 
   Future<dynamic> put(String apiUrl) async {}
