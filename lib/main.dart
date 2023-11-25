@@ -99,7 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const Put_Page()));
+                            builder: (context) => PutPage(apiUrl: apiController.text)));
                   }),
             ),
             SizedBox(

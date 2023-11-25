@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:rest_api/services/crud.dart';
 
@@ -141,22 +143,23 @@ class _PostPageState extends State<PostPage> {
                           double.tryParse(rateController.text)??0.0,
                           int.tryParse(countController.text)??0);
 
-                      // if(idController.text.isEmpty || titleController.text.isEmpty||
-                      //     priceController.text.isEmpty||
-                      //     descController.text.isEmpty||
-                      //     categoryController.text.isEmpty||
-                      //     imgController.text.isEmpty||
-                      //     rateController.text.isEmpty||
-                      //     countController.text.isEmpty){
-                      //   ScaffoldMessenger.of(context).showSnackBar(
-                      //     const SnackBar(
-                      //       content: Text('Empty feilds found'),
-                      //       duration: Duration(seconds: 2),
-                      //     ),
-                      //   );
-                      // }
+                      if(idController.text.isEmpty || titleController.text.isEmpty||
+                          priceController.text.isEmpty||
+                          descController.text.isEmpty||
+                          categoryController.text.isEmpty||
+                          imgController.text.isEmpty||
+                          rateController.text.isEmpty||
+                          countController.text.isEmpty){
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Empty feilds found'),
+                            duration: Duration(seconds: 2),
+                          ),
+                        );
+                        return;
+                      }
 
-                      if (res == 200) {
+                      else if (res == 200) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text('Request successful!'),
@@ -175,15 +178,15 @@ class _PostPageState extends State<PostPage> {
                           countController.clear();
                         });
                       }
-                      // else
-                      //   {
-                      //     ScaffoldMessenger.of(context).showSnackBar(
-                      //       const SnackBar(
-                      //         content: Text('Request failed!'),
-                      //         duration: Duration(seconds: 2),
-                      //       ),
-                      //     );
-                      //   }
+                      else
+                        {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Request failed!'),
+                              duration: Duration(seconds: 2),
+                            ),
+                          );
+                        }
                     }
                       )
                     ),
