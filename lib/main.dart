@@ -61,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
               width: double.infinity,
               child: ElevatedButton(
                   child: const Text(
-                    'GET',
+                    'FETCH',
                     style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                   ),
                   onPressed: () {
@@ -76,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
               width: double.infinity,
               child: ElevatedButton(
                   child: const Text(
-                    'POST',
+                    'CREATE',
                     style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                   ),
                   onPressed: () {
@@ -92,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
               width: double.infinity,
               child: ElevatedButton(
                   child: const Text(
-                    'PUT',
+                    'UPDATE',
                     style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                   ),
                   onPressed: () {
@@ -113,7 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const Delete_Page()));
+                            builder: (context) => DeletePage(apiUrl: apiController.text)));
                   }),
             ),
           ],

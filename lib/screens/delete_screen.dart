@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:rest_api/services/crud.dart';
 
-class Delete_Page extends StatelessWidget {
-  const Delete_Page({super.key});
+class DeletePage extends StatelessWidget {
+  DeletePage({super.key, required this.apiUrl});
+  final String apiUrl;
 
+  final idController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,19 +17,45 @@ class Delete_Page extends StatelessWidget {
         margin: const EdgeInsets.all(10),
         child: Column(
           children: [
-            const TextField(
+            TextField(
+              controller: idController,
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Prodct ID'
-              ),
+                  border: OutlineInputBorder(), labelText: 'Prodct ID'),
             ),
             const SizedBox(height: 20),
             SizedBox(
               width: 150,
-              child: TextButton(onPressed: (){}, child: Text('SUBMIT', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20)),
-              style: TextButton.styleFrom(
-                backgroundColor: Colors.purpleAccent
-              ),),
+              child: TextButton(
+                style:
+                TextButton.styleFrom(backgroundColor: Colors.purpleAccent),
+                child: const Text('SUBMIT',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20)),
+                onPressed: () async {
+                  if (idController.text.isEmpty){
+                    FocusScope.of(context).unfocus();
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Invalid ID!'),
+                        duration: Duration(seconds: 2),
+                      ),
+                    );
+                    return;
+                  }
+                  var res = await Crud().delete(apiUrl, int.tryParse(idController.text));
+                  if(res == 200){
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Delete successful!'),
+                        duration: Duration(seconds: 2),
+                      ),
+                    );
+                    FocusScope.of(context).unfocus();
+                  }
+                },
+              ),
             )
           ],
         ),

@@ -58,5 +58,13 @@ class Crud {
     }
   }
 
-  Future<dynamic> delete(String apiUrl) async {}
+  Future<dynamic> delete(String apiUrl, int? id) async {
+    final response = await http.delete(Uri.parse("$apiUrl/$id"));
+    if(response.statusCode == 200){
+      return 200;
+    }
+    else{
+      throw Exception('Failed to Delete!');
+    }
+  }
 }
