@@ -31,7 +31,7 @@ class _PostPageState extends State<PostPage> {
             .of(context)
             .colorScheme
             .inversePrimary,
-        title: const Text("POST"),
+        title: const Text("Create product data"),
       ),
       body: SingleChildScrollView(
         child: Container(

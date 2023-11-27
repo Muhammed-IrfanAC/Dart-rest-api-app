@@ -1,16 +1,13 @@
-# rest_api
+# rest_api-app
 
-A new Flutter project.
+First Flutter project.
 
-## Getting Started
+## About the app
 
-This project is a starting point for a Flutter application.
+This application utilizes the FakeStore API to fetch each products from the API and list them. Also other HTTP Methods like POST, PUT, DELETE were also implemented
 
-A few resources to get you started if this is your first Flutter project:
+![Screenshot 2023-11-27 172339.png](..%2F..%2FOneDrive%2FPictures%2FScreenshots%2FScreenshot%202023-11-27%20172339.png)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+![Screenshot 2023-11-27 172705.png](..%2F..%2FOneDrive%2FPictures%2FScreenshots%2FScreenshot%202023-11-27%20172705.png)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Screenshot 2023-11-27 172727.png](..%2F..%2FOneDrive%2FPictures%2FScreenshots%2FScreenshot%202023-11-27%20172727.png)

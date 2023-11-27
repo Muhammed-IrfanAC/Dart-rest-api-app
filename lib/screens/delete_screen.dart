@@ -11,7 +11,7 @@ class DeletePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('DELETE'),
+        title: const Text('Delete Product Data'),
       ),
       body: Container(
         margin: const EdgeInsets.all(10),
@@ -19,7 +19,7 @@ class DeletePage extends StatelessWidget {
           children: [
             TextField(
               controller: idController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   border: OutlineInputBorder(), labelText: 'Prodct ID'),
             ),
             const SizedBox(height: 20),

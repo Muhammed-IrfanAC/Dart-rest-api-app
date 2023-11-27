@@ -31,7 +31,7 @@ class _GetPageState extends State<GetPage> {
                 .of(context)
                 .colorScheme
                 .inversePrimary,
-            title: const Text("GET")),
+            title: const Text("Product Data")),
         body: FutureBuilder<List<ProductModel>>(
             future: productData,
             builder: (context, snapshot) {

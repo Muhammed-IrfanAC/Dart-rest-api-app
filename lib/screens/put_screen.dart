@@ -25,7 +25,7 @@ class _PutPageState extends State<PutPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text("PUT"),
+        title: const Text("Update Product Data"),
       ),
       body: SingleChildScrollView(
         child: Container(
