@@ -1,3 +1,4 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:rest_api/screens/delete_screen.dart';
 import 'package:rest_api/screens/post_screen.dart';
@@ -15,14 +16,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'REST API'),
-    );
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: AnimatedSplashScreen(
+          duration: 1500,
+            splash: Image.network("https://fakestoreapi.com/icons/logo.png"),
+            nextScreen: const MyHomePage(title: 'Fake Store API')));
   }
 }
 
@@ -36,7 +38,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final apiController = TextEditingController();
+  String apiUrl = "https://fakestoreapi.com/products";
 
   @override
   Widget build(BuildContext context) {
@@ -50,12 +52,15 @@ class _MyHomePageState extends State<MyHomePage> {
         width: double.infinity,
         child: Column(
           children: [
-            TextField(
-                controller: apiController,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: "API address goes here",
-                )),
+            Container(
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                    border: Border.all(),
+                    borderRadius:
+                        const BorderRadius.all(Radius.circular(10.0))),
+                child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Text(apiUrl, style: const TextStyle(fontSize: 20)))),
             const SizedBox(height: 15),
             SizedBox(
               width: double.infinity,
@@ -68,8 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => GetPage(
-                                apiUrl: apiController.text.toString())));
+                            builder: (context) => GetPage(apiUrl: apiUrl)));
                   }),
             ),
             SizedBox(
@@ -83,9 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => PostPage(
-                              apiUrl: apiController.text,
-                            )));
+                            builder: (context) => PostPage(apiUrl: apiUrl)));
                   }),
             ),
             SizedBox(
@@ -99,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => PutPage(apiUrl: apiController.text)));
+                            builder: (context) => PutPage(apiUrl: apiUrl)));
                   }),
             ),
             SizedBox(
@@ -113,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => DeletePage(apiUrl: apiController.text)));
+                            builder: (context) => DeletePage(apiUrl: apiUrl)));
                   }),
             ),
           ],
